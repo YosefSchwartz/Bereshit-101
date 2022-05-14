@@ -28,12 +28,10 @@ public class Bereshit_101 {
             t += MAIN_ENG_F;
         }
         t += seconds_engines * SECOND_ENG_F;
-        // t is 430+8*25 = 630
         double ans = t / weight;
         return ans;
     }
 
-    // 14095, 955.5, 24.8, 2.0
     public static void main(String[] args) {
         System.out.println("Simulating Bereshit's Landing:");
         // starting point:
@@ -47,17 +45,16 @@ public class Bereshit_101 {
         double acc = 0; // Acceleration rate (m/s^2)
         double fuel = 121; //
         double weight = WEIGHT_EMP + fuel;
-        // System.out.println("time, verticalSpeed, hs, dist, alt, ang,weight,acc");
         double NN = 0.7; // rate[0,1]
 
         // ***** main simulation loop ******
         while (altitude > 0) {
-//            if (time % 10 == 0 || altitude < 100) { // print if 100 meters from the moon or time%10 ==0
+            if (time % 10 == 0 || altitude < 100) { // print if 100 meters from the moon or time%10 ==0
                 System.out.println("time: " + time + "\tverticalSpeed: " + verticalSpeed + "\thorizontalSpeed: "
                         + horizontalSpeed + "\tdist: " + dist + "\taltitude: " + altitude + "\nangle: " + angle
                         + "\tFuel left: " + (weight - WEIGHT_EMP) + "\tacc: " + acc);
                 System.out.println("*********************************************************");
-//            }
+            }
 
             // over 2 km above the ground
             if (altitude > 2000) { // maintain a vertical speed of [20-25] m/s
@@ -109,34 +106,6 @@ public class Bereshit_101 {
             }
 
 
-            // // over 2 km above the ground
-            // if(altitude>2000) { // maintain a vertical speed of [20-25] m/s
-            // if(verticalSpeed >25) {NN+=0.003*deltaTime;} // more power for braking
-            // if(verticalSpeed <20) {NN-=0.003*deltaTime;} // less power for braking
-            // }
-            // // lower than 2 km - horizontal speed should be close to zero
-            // else {
-            // if(angle>3) {
-            // angle-=3;
-            // } // rotate to vertical position.
-            // else {
-            // angle =0;
-            // }
-            // NN=0.5; // brake slowly, a proper PID controller here is needed!
-            // if(horizontalSpeed<2) {
-            // horizontalSpeed=0;
-            // }
-            // if(altitude<125) { // very close to the ground!
-            // NN=1; // maximum braking!
-            // if(verticalSpeed<5) {
-            // NN=0.7;
-            // } // if it is slow enough - go easy on the brakes
-            // }
-            // }
-
-            // if(altitude<5) { // no need to stop
-            // NN=0.4;
-            // }
 
             // main computations
             double ang_rad = Math.toRadians(angle);
