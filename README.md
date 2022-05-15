@@ -15,6 +15,8 @@ The first state was over 2km alt and we just keep on the vertical speed to be be
 In the second state, close to the moon, we try to save as we can the fuel and yet land smoothly.<br />
 This is reflected by decrease the angle by 3 degrees each delta time and slow down the horizontal speed up to 0.<br />
 
+We understood that to improve it, we needed to use physics calculations with newton force, but we had a hard time doing these calculations, so we tried to improve the best we could.<br />
+<br />
 The main computations calculated by the lecturer.<br />
 
 ### By: Eden Shkuri, Shani itzhakov and Yosef Schwartz
